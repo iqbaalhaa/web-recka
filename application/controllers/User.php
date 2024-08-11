@@ -24,7 +24,7 @@
 				array('db' => 'foto', 
 					  'dt' => 'foto',
 					  'formatter' => function($d) {
-					  		return "<img width='20px' src='".base_url()."/uploads/".$d."'>";
+					  		return "<img width='20px' src='".base_url()."/uploads/user/".$d."'>";
 					  }
 				),
 		        array('db' => 'nama_lengkap', 'dt' => 'nama_lengkap'),
@@ -86,7 +86,7 @@
 		{
 			$kode_user = $this->uri->segment(3);
 			if (!empty($kode_user)) {
-				$this->db->where('kd_user', $kode_user);
+				$this->db->where('id_user', $kode_user);
 				$this->db->delete('tbl_user');
 			}
 			redirect('user');
@@ -95,7 +95,7 @@
 		function upload_foto_user()
 		{
 			//validasi foto yang di upload
-			$config['upload_path']          = './uploads/user/';
+			$config['upload_path']          = './uploads/user';
             $config['allowed_types']        = 'gif|jpg|png';
             $config['max_size']             = 1024;
             $this->load->library('upload', $config);
